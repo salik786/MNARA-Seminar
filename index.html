@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI-Powered Job Search — Seminar Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:      #1c2b3a;
+      --primary-mid:  #2c3e50;
+      --accent:       #c8873a;
+      --accent-light: #f5e8d8;
+      --teal:         #2a6b6e;
+      --teal-light:   #e0f0f1;
+      --plum:         #5b3f7a;
+      --plum-light:   #ede8f5;
+      --neutral-50:   #fafaf9;
+      --neutral-100:  #f3f3f1;
+      --neutral-200:  #e8e8e4;
+      --neutral-400:  #a8a89e;
+      --neutral-600:  #6b6b63;
+      --neutral-800:  #2e2e28;
+      --white:        #ffffff;
+      --danger:       #8b2020;
+      --danger-bg:    #fdf0f0;
+      --success:      #1f5c3a;
+      --success-bg:   #edf6f1;
+      --radius-sm:    4px;
+      --radius:       8px;
+      --radius-lg:    12px;
+      --shadow:       0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-800);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--primary);
+      color: var(--white);
+      padding: 88px 40px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(200,135,58,0.13) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(42,107,110,0.11) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cover-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cover-eyebrow {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200,135,58,0.38);
+      border-radius: 2px;
+      padding: 5px 14px;
+      margin-bottom: 28px;
+    }
+    .cover h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .cover h1 em { font-style: normal; color: var(--accent); }
+    .cover .sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 540px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+    .cover-savings {
+      display: inline-block;
+      background: rgba(200,135,58,0.18);
+      border: 1px solid rgba(200,135,58,0.3);
+      border-radius: var(--radius-sm);
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      margin: 16px 0 32px;
+    }
+    .cover-savings strong { color: var(--accent); }
+    .cover-phases {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .cover-phase {
+      flex: 1;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.6);
+      border-right: 1px solid rgba(255,255,255,0.12);
+      text-align: center;
+    }
+    .cover-phase:last-child { border-right: none; }
+    .cover-phase .ph-num {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    /* ── PREREQ ── */
+    .prereq-band {
+      background: var(--accent-light);
+      border-bottom: 1px solid #e8d5bb;
+      padding: 32px 40px;
+    }
+    .prereq-inner { max-width: 800px; margin: 0 auto; }
+    .prereq-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .prereq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 10px; }
+    .prereq-item {
+      background: white;
+      border: 1px solid #e0cdb8;
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .prereq-item .p-label { font-size: 0.8rem; font-weight: 600; color: var(--primary); margin-bottom: 2px; }
+    .prereq-item .p-cost { font-size: 0.72rem; color: var(--neutral-600); font-family: 'DM Mono', monospace; }
+    .prereq-item .p-tick { font-size: 0.68rem; color: var(--teal); font-weight: 600; float: right; margin-top: 2px; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin: 48px auto;
+      max-width: 800px;
+    }
+    .toc-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neutral-400); margin-bottom: 24px; }
+    .toc-group { margin-bottom: 22px; }
+    .toc-group:last-child { margin-bottom: 0; }
+    .toc-section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      padding-bottom: 4px;
+    }
+    .toc a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--neutral-800);
+      text-decoration: none;
+      padding: 5px 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--neutral-100);
+      transition: color 0.15s;
+    }
+    .toc a:last-child { border-bottom: none; }
+    .toc a:hover { color: var(--accent); }
+    .toc .step-tag { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--neutral-400); min-width: 48px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      max-width: 800px;
+      margin: 72px auto 0;
+      padding: 0 24px 0 28px;
+      border-left: 3px solid var(--accent);
+    }
+    .section-header.track { border-left-color: var(--teal); }
+    .section-header.prepare { border-left-color: var(--plum); }
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-header.track .section-eyebrow { color: var(--teal); }
+    .section-header.prepare .section-eyebrow { color: var(--plum); }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .section-header p { font-size: 0.93rem; color: var(--neutral-600); }
+
+    /* ── STEP CARDS ── */
+    .content { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin: 24px 0;
+      position: relative;
+    }
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: var(--primary);
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    }
+    .step-card.apply::before   { background: var(--teal); }
+    .step-card.track::before   { background: var(--teal); }
+    .step-card.prepare::before { background: var(--plum); }
+
+    .step-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--primary);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .step-card.apply .step-num   { background: var(--teal); }
+    .step-card.track .step-num   { background: var(--teal); }
+    .step-card.prepare .step-num { background: var(--plum); }
+    .step-time {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      color: var(--neutral-400);
+      border: 1px solid var(--neutral-200);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .step-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .step-card p { color: var(--neutral-600); font-size: 0.93rem; }
+    .step-card ul, .step-card ol { padding-left: 20px; margin-top: 10px; }
+    .step-card li { color: var(--neutral-600); font-size: 0.93rem; margin-bottom: 6px; }
+    .step-card strong { color: var(--neutral-800); }
+
+    /* ── CALLOUTS ── */
+    .callout { border-radius: var(--radius-sm); padding: 16px 20px; margin: 14px 0; font-size: 0.875rem; }
+    .callout-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .callout p, .callout li { font-size: 0.875rem; line-height: 1.6; }
+    .callout ul { padding-left: 18px; margin-top: 6px; }
+    .callout li { margin-bottom: 5px; }
+
+    .callout-info    { background: #eef4fb; border-left: 3px solid #3a7cc0; color: #1a3a5c; }
+    .callout-info .callout-label { color: #3a7cc0; }
+    .callout-warning { background: #fdf8ee; border-left: 3px solid var(--accent); color: #5a3e10; }
+    .callout-warning .callout-label { color: var(--accent); }
+    .callout-success { background: var(--success-bg); border-left: 3px solid var(--teal); color: var(--success); }
+    .callout-success .callout-label { color: var(--teal); }
+    .callout-plum    { background: var(--plum-light); border-left: 3px solid var(--plum); color: #3a2555; }
+    .callout-plum .callout-label { color: var(--plum); }
+    .callout-danger  { background: var(--danger-bg); border: 1px solid #e8b4b4; border-radius: var(--radius); color: var(--danger); }
+    .callout-danger .callout-label { color: var(--danger); }
+    .callout-danger ul { padding-left: 18px; }
+    .callout-danger li { color: var(--danger); font-weight: 500; margin-bottom: 6px; }
+    .callout-green   { background: var(--success-bg); border: 1px solid #b8ddc8; border-radius: var(--radius); color: var(--success); }
+    .callout-green .callout-label { color: var(--teal); }
+    .callout-red     { background: var(--danger-bg); border: 1px solid #e8b4b4; border-radius: var(--radius); color: var(--danger); }
+    .callout-red .callout-label { color: var(--danger); }
+
+    /* ── PROMPT BOX ── */
+    .prompt-box {
+      background: #14202c;
+      color: #d4dde6;
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 16px 0;
+      position: relative;
+    }
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .prompt-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .copy-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(200,135,58,0.15);
+      border: 1px solid rgba(200,135,58,0.28);
+      border-radius: 3px;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .copy-btn:hover { background: rgba(200,135,58,0.27); }
+    .copy-btn.copied { color: #4caf50; border-color: rgba(76,175,80,0.3); background: rgba(76,175,80,0.1); }
+    .prompt-content {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      color: #d4dde6;
+      display: block;
+    }
+
+    /* ── CONNECTORS ── */
+    .connector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+    .connector-chip {
+      background: var(--neutral-50);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--neutral-800);
+    }
+    .connector-chip .icon { font-size: 1.1rem; display: block; margin-bottom: 4px; }
+
+    /* ── SCREENSHOTS ── */
+    .screenshot { margin: 14px 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--neutral-200); background: #f0f0ee; }
+    .screenshot img { width: 100%; display: block; }
+    .screenshot-caption { background: var(--neutral-100); border-top: 1px solid var(--neutral-200); padding: 7px 14px; font-size: 0.73rem; color: var(--neutral-400); font-style: italic; }
+    .screenshot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+
+    /* ── APIFY STEPS ── */
+    .apify-steps { margin: 14px 0; }
+    .apify-step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+    .apify-dot {
+      min-width: 28px; height: 28px;
+      background: var(--teal);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 600; flex-shrink: 0;
+      font-family: 'DM Mono', monospace;
+    }
+    .apify-step p { color: var(--neutral-600); font-size: 0.93rem; padding-top: 3px; }
+
+    /* ── GMAIL STEPS ── */
+    .gmail-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+    .gmail-step-num {
+      display: inline-flex; min-width: 24px; height: 24px;
+      background: #c0392b; color: white; border-radius: 50%;
+      align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 600; flex-shrink: 0; margin-top: 1px;
+    }
+    .gmail-step p { color: var(--neutral-600); font-size: 0.93rem; }
+
+    /* ── OUTPUT GRID ── */
+    .output-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .output-card { background: var(--neutral-50); border: 1px solid var(--neutral-200); border-radius: var(--radius); padding: 20px 22px; }
+    .output-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .output-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-bottom: 5px; }
+    .output-card p { font-size: 0.83rem; color: var(--neutral-600); line-height: 1.55; }
+
+    /* ── MODEL ROW ── */
+    .model-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
+    .model-chip { border: 1px solid var(--neutral-200); border-radius: var(--radius-sm); padding: 10px 16px; font-size: 0.85rem; font-weight: 500; color: var(--neutral-800); background: var(--neutral-50); }
+    .model-chip.recommended { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .model-chip .tag { font-size: 0.68rem; display: block; font-weight: 400; opacity: 0.7; margin-top: 2px; font-family: 'DM Mono', monospace; }
+
+    /* ── SKILL CARD ── */
+    .skill-card {
+      background: var(--plum-light);
+      border: 1px solid #cbbfe0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .skill-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .skill-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--plum);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+    .skill-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--plum); }
+    .skill-card p { font-size: 0.875rem; color: #3a2555; line-height: 1.6; }
+    .skill-trigger-list { margin-top: 10px; padding-left: 18px; }
+    .skill-trigger-list li { font-size: 0.83rem; color: #4a3065; margin-bottom: 4px; }
+
+    /* ── TIPS GRID ── */
+    .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    .tip-card {
+      background: var(--white);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .tip-card .tip-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .tip-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+    .tip-card p { font-size: 0.82rem; color: var(--neutral-600); line-height: 1.55; }
+
+    /* ── POSSIBILITIES ── */
+    .possibilities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+    .possibility-card { background: var(--white); border: 1px solid var(--neutral-200); border-radius: var(--radius); padding: 20px 22px; }
+    .p-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+    .possibility-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--primary); margin-bottom: 5px; }
+    .possibility-card p { font-size: 0.82rem; color: var(--neutral-600); line-height: 1.55; }
+
+    /* ── TROUBLESHOOTING ── */
+    .trouble-item { border: 1px solid var(--neutral-200); border-radius: var(--radius); padding: 20px 24px; margin: 12px 0; background: var(--white); }
+    .trouble-q { font-weight: 600; color: var(--primary); font-size: 0.9rem; margin-bottom: 6px; }
+    .trouble-q::before { content: 'Q — '; color: var(--neutral-400); font-weight: 400; }
+    .trouble-a { font-size: 0.875rem; color: var(--neutral-600); line-height: 1.6; }
+    .trouble-a::before { content: 'A — '; color: var(--teal); font-weight: 500; }
+
+    /* ── KEYWORD BOX ── */
+    .kw-box { background: var(--neutral-100); border: 1px solid var(--neutral-200); border-radius: var(--radius-sm); padding: 12px 16px; font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--neutral-800); margin: 12px 0; }
+
+    /* ── CLOSING ── */
+    .closing-banner {
+      background: var(--primary);
+      color: var(--white);
+      max-width: 800px;
+      margin: 32px auto;
+      border-radius: var(--radius-lg);
+      padding: 48px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 30% 100%, rgba(200,135,58,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .closing-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 14px; position: relative; }
+    .closing-banner p { opacity: 0.75; font-size: 0.93rem; line-height: 1.8; max-width: 560px; margin: 0 auto; position: relative; }
+
+    /* ── MISC ── */
+    .divider { border: none; border-top: 1px solid var(--neutral-200); margin: 56px 0 0; }
+    footer { text-align: center; padding: 40px 24px; color: var(--neutral-400); font-size: 0.8rem; border-top: 1px solid var(--neutral-200); margin-top: 48px; }
+
+    @media (max-width: 640px) {
+      .cover { padding: 60px 24px 48px; }
+      .cover-phases { flex-direction: column; }
+      .prereq-band { padding: 24px; }
+      .connector-grid { grid-template-columns: repeat(2, 1fr); }
+      .screenshot-row { grid-template-columns: 1fr; }
+      .output-grid, .tips-grid, .possibilities-grid { grid-template-columns: 1fr; }
+      .toc { padding: 24px; }
+      .step-card { padding: 24px 20px; }
+      .closing-banner { padding: 36px 28px; }
+      .prompt-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">Seminar Guide</div>
+    <h1>AI-Powered<br><em>Job Search</em></h1>
+    <p class="sub">A structured workflow to find, score, track, and prepare for job opportunities — using Claude and the tools you already have.</p>
+    <div class="cover-savings">
+      <strong>One-time setup: 30 – 60 minutes.</strong> Ongoing benefit: hundreds of hours saved across your job search.
+    </div>
+    <div class="cover-phases">
+      <div class="cover-phase"><span class="ph-num">Phase 1</span>Apply</div>
+      <div class="cover-phase"><span class="ph-num">Phase 2</span>Track</div>
+      <div class="cover-phase"><span class="ph-num">Phase 3</span>Prepare</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PREREQUISITES ═══ -->
+<div class="prereq-band">
+  <div class="prereq-inner">
+    <div class="prereq-title">Before You Begin — What You Need</div>
+    <div class="prereq-grid">
+      <div class="prereq-item">
+        <span class="p-tick">Required</span>
+        <div class="p-label">Claude Desktop (Pro)</div>
+        <div class="p-cost">~$34 AUD/month</div>
+      </div>
+      <div class="prereq-item">
+        <span class="p-tick">Required</span>
+        <div class="p-label">Gmail Account</div>
+        <div class="p-cost">Free</div>
+      </div>
+      <div class="prereq-item">
+        <span class="p-tick">Required</span>
+        <div class="p-label">Notion Account</div>
+        <div class="p-cost">Free tier works</div>
+      </div>
+      <div class="prereq-item">
+        <span class="p-tick">Required</span>
+        <div class="p-label">Apify Account</div>
+        <div class="p-cost">Free tier works</div>
+      </div>
+      <div class="prereq-item">
+        <span class="p-tick">Required</span>
+        <div class="p-label">Google Drive</div>
+        <div class="p-cost">Free (linked to Gmail)</div>
+      </div>
+      <div class="prereq-item">
+        <span class="p-tick">Helpful</span>
+        <div class="p-label">Existing Resume</div>
+        <div class="p-cost">Any format — Claude will build on it</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TABLE OF CONTENTS ═══ -->
+<div class="toc">
+  <div class="toc-label">Contents</div>
+
+  <div class="toc-group">
+    <div class="toc-section-label">Phase 1 — Apply (Setup + Automated Search)</div>
+    <a href="#step1"><span class="step-tag">Step 1</span>Download Claude Desktop &amp; Get a Plan</a>
+    <a href="#step2"><span class="step-tag">Step 2</span>Open Cowork &amp; Go to Customize</a>
+    <a href="#step3"><span class="step-tag">Step 3</span>Connect Your Connectors</a>
+    <a href="#step4"><span class="step-tag">Step 4</span>Set Up Apify + Configure Actor Filters</a>
+    <a href="#step5"><span class="step-tag">Step 5</span>Install the Resume Doctor Skill</a>
+    <a href="#step6"><span class="step-tag">Step 6</span>Create Your Master Resume</a>
+    <a href="#step7"><span class="step-tag">Step 7</span>Create a Scheduled Task in Cowork</a>
+    <a href="#step8"><span class="step-tag">Step 8</span>Paste the Job Ranker Prompt &amp; Customise</a>
+    <a href="#step9"><span class="step-tag">Step 9</span>Set Model &amp; Schedule, Then Run</a>
+    <a href="#step10"><span class="step-tag">Step 10</span>What Claude Creates for You</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-section-label">Phase 2 — Track Your Applications</div>
+    <a href="#step11"><span class="step-tag">Step 11</span>Create a Gmail Filter for Job Emails</a>
+    <a href="#step12"><span class="step-tag">Step 12</span>Use Claude to Process &amp; Update Your Tracker</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-section-label">Phase 3 — Prepare for Interviews</div>
+    <a href="#step13"><span class="step-tag">Step 13</span>Interview Prep Prompt + Tips for Being Ready</a>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-section-label">Reference</div>
+    <a href="#power"><span class="step-tag">—</span>What Else Can You Do Now?</a>
+    <a href="#troubleshooting"><span class="step-tag">—</span>Troubleshooting Common Issues</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PHASE 1 — APPLY (SETUP)
+════════════════════════════════════════════════ -->
+<div class="section-header" id="section-setup">
+  <div class="section-eyebrow">Phase 1 — Apply</div>
+  <h2>Setup</h2>
+  <p>Complete this once. Takes 30–60 minutes total. Everything after this runs with minimal effort on your part.</p>
+</div>
+
+<div class="content">
+
+  <!-- STEP 1 -->
+  <div class="step-card" id="step1">
+    <div class="step-meta"><span class="step-num">Step 1</span><span class="step-time">~ 10 min</span></div>
+    <h3>Download Claude Desktop &amp; Get a Plan</h3>
+    <p>Claude Desktop is the application that powers everything in this guide. You need the paid Pro plan to access Cowork, run scheduled tasks, and connect third-party tools.</p>
+    <ul style="margin-top:12px;">
+      <li>Go to <strong>claude.ai</strong> in your browser</li>
+      <li>Click <strong>Download Claude</strong> and install the desktop app</li>
+      <li>Sign in or create a free account</li>
+      <li>Upgrade to the <strong>Pro plan (~$34 AUD/month)</strong> — required for Cowork, scheduled tasks, and connectors</li>
+    </ul>
+    <div class="callout callout-info" style="margin-top:16px;">
+      <span class="callout-label">Why the paid plan?</span>
+      The free tier doesn't include Cowork or scheduled automation. Pro is what transforms Claude from a chat assistant into a connected workflow that can run research on a schedule, access your tools, and write to Notion and Google Drive.
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">Stuck at any point?</span>
+      If anything in this guide isn't working as described, just ask Claude directly in a chat window — describe what you're trying to do and what happened. You can also use ChatGPT as a second opinion. These tools are designed to help you debug themselves.
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-card" id="step2">
+    <div class="step-meta"><span class="step-num">Step 2</span><span class="step-time">~ 2 min</span></div>
+    <h3>Open Claude Desktop &amp; Switch to Cowork</h3>
+    <p>Open Claude Desktop. At the top you'll see three tabs: <strong>Chat</strong>, <strong>Cowork</strong>, and <strong>Code</strong>. Click <strong>Cowork</strong>.</p>
+    <p style="margin-top:8px;">In the Cowork sidebar you'll find: New task, Projects, <strong>Scheduled</strong>, Live artifacts, Dispatch, and <strong>Customize</strong>. You'll use both Scheduled and Customize throughout this guide.</p>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.38.49.png" alt="Claude Desktop showing Chat, Cowork, Code tabs" />
+        <div class="screenshot-caption">Switch to the Cowork tab</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.38.56.png" alt="Cowork sidebar showing Scheduled and Customize" />
+        <div class="screenshot-caption">Cowork sidebar — Scheduled and Customize</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-card" id="step3">
+    <div class="step-meta"><span class="step-num">Step 3</span><span class="step-time">~ 10 min</span></div>
+    <h3>Connect Your Connectors</h3>
+    <p>Click <strong>Customize</strong> in the sidebar → <strong>Connectors</strong> tab → click <strong>+</strong> → <strong>Browse connectors</strong>. Search for and connect each of the following:</p>
+    <div class="connector-grid">
+      <div class="connector-chip"><span class="icon">📓</span>Notion</div>
+      <div class="connector-chip"><span class="icon">📧</span>Gmail</div>
+      <div class="connector-chip"><span class="icon">📁</span>Google Drive</div>
+      <div class="connector-chip"><span class="icon">💼</span>Indeed</div>
+      <div class="connector-chip"><span class="icon">🌐</span>Google Chrome</div>
+      <div class="connector-chip"><span class="icon">🤖</span>Apify</div>
+    </div>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.39.13.png" alt="Customize page with Connectors tab" />
+        <div class="screenshot-caption">Customize → Connectors tab</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.39.22.png" alt="Browse connectors dropdown" />
+        <div class="screenshot-caption">Click + → Browse connectors</div>
+      </div>
+    </div>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.39.35.png" alt="Searching for Notion connector" />
+        <div class="screenshot-caption">Search "notion" → click + to connect</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.42.42.png" alt="Searching for Gmail connector" />
+        <div class="screenshot-caption">Search "gmail" → click + to connect</div>
+      </div>
+    </div>
+    <div class="callout callout-info">
+      <span class="callout-label">Authentication</span>
+      Each connector opens a browser window asking you to sign in and grant access. This is a one-time step per tool. If a connector fails to authenticate, close the window and try again — ensure you're logged into the correct Google or Notion account in your browser first.
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-card" id="step4">
+    <div class="step-meta"><span class="step-num">Step 4</span><span class="step-time">~ 8 min</span></div>
+    <h3>Set Up Apify &amp; Configure Actor Filters</h3>
+    <p>Apify provides the scrapers that search LinkedIn and SEEK on your behalf. It has a generous free tier. You need your API token, and ideally you'll pre-configure the search actors so your results are targeted from the first run.</p>
+
+    <div class="apify-steps" style="margin-top:18px;">
+      <div class="apify-step"><div class="apify-dot">1</div><p>Go to <strong>apify.com</strong>, create a free account or log in.</p></div>
+      <div class="apify-step"><div class="apify-dot">2</div><p>In the left sidebar, scroll down and click <strong>Settings</strong>.</p></div>
+    </div>
+    <div class="screenshot">
+      <img src="Screenshot 2026-06-09 at 13.41.49.png" alt="Apify sidebar with Settings" />
+      <div class="screenshot-caption">Click "Settings" in the Apify left sidebar</div>
+    </div>
+    <div class="apify-steps" style="margin-top:14px;">
+      <div class="apify-step"><div class="apify-dot">3</div><p>Inside Settings, click the <strong>API</strong> button in the top-right corner.</p></div>
+    </div>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.42.02.png" alt="API button" />
+        <div class="screenshot-caption">Click the "API" button</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.42.25.png" alt="API token page" />
+        <div class="screenshot-caption">The API token page</div>
+      </div>
+    </div>
+    <div class="apify-steps" style="margin-top:14px;">
+      <div class="apify-step"><div class="apify-dot">4</div><p>Click the <strong>copy icon</strong> next to your Personal API token.</p></div>
+      <div class="apify-step"><div class="apify-dot">5</div><p>Back in Claude → <strong>Customize → Connectors → Apify → Configure</strong>. Paste your token and save.</p></div>
+    </div>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.42.33.png" alt="Copy API token" />
+        <div class="screenshot-caption">Copy your Personal API token</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.40.28.png" alt="Apify enabled with Configure button" />
+        <div class="screenshot-caption">Claude → Apify → Configure → paste token</div>
+      </div>
+    </div>
+    <div class="screenshot-row">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 13.43.10.png" alt="Search Apify in connectors" />
+        <div class="screenshot-caption">Search "apify" → gear icon</div>
+      </div>
+    </div>
+
+    <p style="margin-top:20px; font-weight:600; color: var(--neutral-800);">Pre-configure Actor Filters for Better Results</p>
+    <p style="margin-top:6px;">Before Claude ever runs the actors, you can set default input filters directly inside Apify. This means every search starts with your location, experience level, and job type already applied — saving tokens and improving accuracy.</p>
+
+    <div class="callout callout-info" style="margin-top:14px;">
+      <span class="callout-label">How to set actor default inputs</span>
+      <p>Go to <strong>apify.com → Store</strong> → search for the actor → click it → click <strong>Try for free</strong> or <strong>Open in Console</strong>. In the Input tab, fill in your filters and click <strong>Save input</strong>. Claude will use these defaults unless you override them in the prompt.</p>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="skill-card" style="background: #e8f4fb; border-color: #b8d8f0;">
+        <div class="skill-card-header">
+          <span class="skill-badge" style="background: #2a6b9e;">SEEK Scraper</span>
+          <h4 style="color:#1a3a5c;">blackfalcondata/seek-scraper</h4>
+        </div>
+        <p style="color:#1a3a5c;">Useful filters to set as defaults:</p>
+        <ul class="skill-trigger-list" style="color:#1a3a5c;">
+          <li><strong>location</strong> — e.g., <code>Australia</code>, <code>Melbourne VIC</code></li>
+          <li><strong>keywords</strong> — e.g., <code>Software Engineer, Full Stack Developer</code></li>
+          <li><strong>dateRange</strong> — set to <code>7</code> (days) to get only fresh listings</li>
+          <li><strong>workType</strong> — e.g., <code>Remote</code>, <code>Hybrid</code></li>
+          <li><strong>salaryMin</strong> — your minimum salary in AUD</li>
+        </ul>
+      </div>
+
+      <div class="skill-card" style="background: #eaf2fb; border-color: #b8cfe8; margin-top:10px;">
+        <div class="skill-card-header">
+          <span class="skill-badge" style="background: #0077b5;">LinkedIn Scraper</span>
+          <h4 style="color:#003a5c;">curious_coder/linkedin-jobs-scraper</h4>
+        </div>
+        <p style="color:#003a5c;">Useful filters to set as defaults:</p>
+        <ul class="skill-trigger-list" style="color:#003a5c;">
+          <li><strong>location</strong> — e.g., <code>Australia</code></li>
+          <li><strong>experienceLevel</strong> — e.g., <code>Entry level</code>, <code>Mid-Senior level</code></li>
+          <li><strong>jobType</strong> — e.g., <code>Full-time</code>, <code>Part-time</code></li>
+          <li><strong>datePosted</strong> — set to <code>Past week</code> for fresh listings</li>
+          <li><strong>remoteFilter</strong> — <code>Remote</code>, <code>Hybrid</code>, or <code>On-site</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-warning" style="margin-top:14px;">
+      <span class="callout-label">Keep your API token private</span>
+      Never share your Apify API token. It grants full access to your Apify account. If you believe it's been exposed, regenerate it immediately from Apify Settings.
+    </div>
+  </div>
+
+  <!-- STEP 5 — SKILLS -->
+  <div class="step-card" id="step5">
+    <div class="step-meta"><span class="step-num">Step 5</span><span class="step-time">~ 5 min</span></div>
+    <h3>Build Your Resume Doctor Skill</h3>
+
+    <p><strong>What are Skills?</strong> Skills are expert workflows you save inside Claude once, so you can trigger them with a single phrase any time. Instead of writing a long prompt every time, you just say "review my resume" and the full structured process runs automatically — like having a specialist on call.</p>
+
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-badge">Skill</span>
+        <h4>Resume Doctor</h4>
+      </div>
+      <p>Reviews your resume like a brutally honest senior technical recruiter — scores it against ATS standards, flags formatting issues that get candidates filtered out, rewrites weak bullets with real impact metrics, and rebuilds everything into a clean, ATS-safe Word <code>.docx</code> file. Works with pasted text, uploaded PDFs, Word files, or even a screenshot.</p>
+      <p style="margin-top:10px;"><strong>Once installed, trigger it by saying any of these:</strong></p>
+      <ul class="skill-trigger-list">
+        <li>"Review my resume" — paste or upload your CV</li>
+        <li>"Score my resume against this job" — paste CV + job description</li>
+        <li>"Why am I not getting interviews?" — paste your CV</li>
+        <li>"Make my resume ATS-friendly" — full audit and rebuild</li>
+        <li>"Roast my CV" — honest, specific critique with no flattery</li>
+        <li>"My resume looks like garbage, fix it" — triggers a full rebuild</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:22px; font-weight:600; color: var(--neutral-800);">How to Build This Skill — Let Claude Do It For You</p>
+    <p style="margin-top:6px; color: var(--neutral-600); font-size:0.93rem;">You don't need to be technical. Just follow these three steps — Claude handles everything else.</p>
+
+    <div class="apify-steps" style="margin-top:16px;">
+      <div class="apify-step">
+        <div class="apify-dot" style="background: var(--plum);">1</div>
+        <p>Open <strong>Claude Desktop</strong>, go to <strong>Cowork → Customize → Skills</strong> tab. Click <strong>+ New skill</strong> or <strong>Create a skill</strong>.</p>
+      </div>
+      <div class="apify-step">
+        <div class="apify-dot" style="background: var(--plum);">2</div>
+        <p>A chat window opens. <strong>Copy the entire prompt below</strong> and paste it into that chat. Press Enter.</p>
+      </div>
+      <div class="apify-step">
+        <div class="apify-dot" style="background: var(--plum);">3</div>
+        <p>Claude will build and install the Resume Doctor skill for you. When it confirms it's done, the skill is live — go to any chat and say "review my resume."</p>
+      </div>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-header">
+        <span class="prompt-label">Skill Creation Prompt — Paste into the Skill Builder chat</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      </div>
+      <span class="prompt-content">Please create a skill called "resume-doctor" with the following configuration. Install it so I can use it from any Claude chat.
+
+SKILL NAME: resume-doctor
+
+DESCRIPTION (what triggers this skill):
+Review a resume like a brutally honest senior technical recruiter, then rebuild it into a clean, ATS-safe Word (.docx) file. Use this skill whenever someone shares a resume or CV (pasted, uploaded .docx/.pdf, or screenshot) and wants feedback, a critique, an ATS check, or help fixing it — and ALSO when the complaint is about how the resume LOOKS (formatting, alignment, headings, spacing, "it looks like garbage", sections not lining up). Trigger on explicit asks ("review my resume", "roast my CV", "score my resume against this job", "tailor my resume to this posting") and on softer cues ("why am I not getting interviews?", "fix my resume", "make my resume look professional", "clean up my resume", "is my resume ATS-friendly?"). If a job description is also provided, the review and scoring become role-specific.
+
+SKILL WORKFLOW:
+
+You are a senior technical recruiter and ATS specialist with 10+ years screening resumes for software, data, and engineering roles. You have seen tens of thousands of resumes and know exactly what gets a candidate filtered out before a human reads them. You catch tiny details others miss. You never say "looks good" without proof, and you never flatter.
+
+This is a two-part skill:
+Part A — Diagnose: Produce a structured recruiter-grade review.
+Part B — Rebuild (optional): Rebuild the resume into a clean, single-column, ATS-safe .docx.
+
+STEP 0 — Get the inputs
+Accept the resume as pasted text, uploaded .docx, uploaded .pdf, or screenshot image.
+If a Job Description (JD) is also provided, the review, scoring, and keyword analysis are all against that specific role. If no JD is provided, review against general ATS best practices and note at the top that a role-specific review would be sharper.
+If the input is unreadable or not a resume, say so plainly and ask for a clean version.
+
+STEP 1 — Part A: The Review
+Produce the assessment in EXACTLY these sections, in this order, using these headings verbatim:
+
+1. Snapshot
+2–3 sentences: overall impression, role fit, and the single biggest problem.
+
+2. ATS Match Score
+Score out of 100, with a one-line breakdown of what cost the most points. Every score must be justified by specific evidence from the resume.
+
+3. ATS & Formatting Issues
+Tables, multi-column layouts, text boxes, icons, image-based headers, non-standard section titles, inconsistent date formats, exotic fonts, contact info in header/footer only. Separate from content problems. If none, write "No major ATS issues detected."
+
+4. Missing / Weak Keywords
+Only if a JD is provided. List JD keywords marked MISSING (not present) or WEAK (present but buried). Omit this section entirely if no JD.
+
+5. Bullet-by-Bullet Fixes
+For each weak bullet:
+- Original: "exact quote"
+- Problem: why it's weak
+- Rewrite: stronger version using action + impact + metric; use [placeholder] for missing numbers, never fabricate.
+
+6. Honest Gaps
+Real mismatches between the candidate and a strong application for this role. One line each on how to address each gap in an interview or with real work.
+
+7. Top 5 Priorities
+Numbered, ranked list of the 5 highest-impact changes. This is the user's action plan.
+
+STEP 2 — Part B: The Rebuild
+After the review, offer: "Want me to rebuild this into a clean, ATS-safe Word doc?" If yes (or if they asked for a rebuild upfront), build a single-column .docx using these rules:
+- Single column only, no tables for layout, no text boxes, no icons or photos
+- Contact info in the body (not in a header/footer)
+- Standard section headings: Summary, Skills, Experience, Projects, Education
+- Arial or Calibri font, 10–12pt body
+- Consistent date format right-aligned via tab stops (not tables)
+- Order: Name + contact → Summary → Skills → Experience → Projects → Education
+- Every bullet: action + impact + metric. Keep [placeholder] tokens for missing numbers.
+- Never invent employers, titles, dates, skills, or numbers.
+Present the .docx file and list any [placeholder] tokens remaining for the user to fill in.
+
+HARD RULES:
+1. Quote the exact text before critiquing any line.
+2. Never inflate qualifications or invent metrics.
+3. Every rewritten bullet follows action + impact + metric.
+4. Formatting problems go in Section 3; content problems in Sections 4–6.
+5. Every score must be tied to evidence in the resume.
+6. The rebuild never fabricates — real content and approved rewrites only.
+
+TONE: Direct, expert, constructive. You are the tough recruiter who actually wants this candidate hired. No flattery, no hedging, no "looks great!" without proof.</span>
+    </div>
+
+    <div class="callout callout-plum">
+      <span class="callout-label">Use it before building your Master Resume</span>
+      Once installed, run Resume Doctor on your current resume <em>before</em> Step 6. The feedback will show you exactly what gaps to fill and which bullets to strengthen — making your Master Resume significantly more complete from the start.
+    </div>
+    <div class="callout callout-warning">
+      <span class="callout-label">Can't find the Skills tab?</span>
+      The Skills interface may vary slightly depending on your version of Claude Desktop. If you can't find it, open a regular chat and say: <em>"I want to create a persistent skill called resume-doctor. Here is the full skill definition — please install it:"</em> then paste the prompt above. Claude will guide you from there.
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step-card" id="step6">
+    <div class="step-meta"><span class="step-num">Step 6</span><span class="step-time">~ 20 – 30 min</span></div>
+    <h3>Create Your Master Resume</h3>
+    <p>Before the automated search can work, Claude needs a <strong>Master Resume</strong> — a complete record of your experience, skills, and achievements. It uses this to score jobs and generate tailored resume variants per role cluster.</p>
+    <p style="margin-top:8px;">Open a <strong>new chat in Claude</strong>, paste the prompt below, and paste whatever resume or notes you have. Claude will interview you step by step to fill the gaps.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-header">
+        <span class="prompt-label">Master CV Prompt — Paste into a new Claude chat</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      </div>
+      <span class="prompt-content">You are a senior resume strategist and technical interviewer with 10+ years of experience helping engineers build comprehensive career records. You are NOT reviewing or scoring this resume. Your single goal is to build a complete MASTER RESUME: an exhaustive record of everything about this candidate, which will later be tailored into job-specific resumes.
+Most users will paste a thin or incomplete resume. Your job is to find every gap and interview the user to fill it.
+
+## THE COMPLETENESS MODEL
+A complete master resume must contain, with full depth:
+- HEADER: full name, location, phone, email, LinkedIn, GitHub/portfolio, work rights / visa status.
+- SUMMARY: years of experience, core domains, standout differentiators.
+- WORK EXPERIENCE — for EVERY role: company, title, dates, location, AND
+  • scope (team size, scale, users, data volume, budget)
+  • technologies used
+  • 3-6 accomplishments, each with a metric (impact, %, time, $, scale)
+  • leadership / ownership signals
+- PROJECTS: name, problem solved, your role, tech stack, outcome/metric.
+- SKILLS, categorized: languages, frameworks, cloud, databases, tools, AI/ML, methodologies.
+- EDUCATION: degree, institution, dates, honors, relevant coursework.
+- CERTIFICATIONS, PUBLICATIONS, TALKS, AWARDS (if any).
+- LINKS: anything that proves the work (repos, demos, articles).
+
+## HOW YOU WORK (the loop)
+On the FIRST turn:
+1. Parse whatever the user gave you. Extract everything present into the master resume structure.
+2. Run a completeness audit: mark each section as COMPLETE, THIN, or MISSING.
+3. Ask the FIRST batch of targeted questions — grouped by topic, max 5-7 questions.
+
+On EVERY following turn:
+1. Integrate answers into the master resume.
+2. Show updated completeness status.
+3. Ask the next batch (5-7 max), until nothing important is missing.
+
+When complete, output the FINAL MASTER RESUME in full.
+
+## RULES
+1. Never fabricate. Leave [TO FILL: ...] placeholders. Never invent metrics, dates, or titles.
+2. Push for metrics relentlessly — ask "What was the measurable result?"
+3. Ask one batch at a time. Group related questions.
+4. Let the user skip. If they say "N/A" or "skip," mark it and move on.
+5. Dig into thin roles. A one-line job entry needs interrogation.
+6. Stay an interviewer, not a critic. Extract only.</span>
+    </div>
+
+    <div class="callout callout-success">
+      <span class="callout-label">After Claude finishes — save to Notion</span>
+      Copy the final Master Resume output and save it to a Notion page titled exactly: <strong>"Master CV/RESUME"</strong>. The automated job search looks for it there by that exact name each time it runs.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─── AUTOMATED JOB SEARCH ─── -->
+  <div style="max-width:800px; margin: 56px auto 0; padding: 0 24px 0 28px; border-left: 3px solid var(--accent);">
+    <div style="font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;">Phase 1 — Apply</div>
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:700; color:var(--primary); margin-bottom:8px;">Automated Job Search</h2>
+    <p style="font-size:0.93rem; color:var(--neutral-600);">With setup complete, configure Claude to run a structured job search on a schedule you define — reducing daily research effort significantly.</p>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step-card apply" id="step7">
+    <div class="step-meta"><span class="step-num">Step 7</span><span class="step-time">~ 2 min</span></div>
+    <h3>Go to Cowork → Scheduled &amp; Create a New Task</h3>
+    <p>In the Cowork sidebar, click <strong>Scheduled</strong>. Then click <strong>+ New scheduled task</strong>.</p>
+    <div class="callout callout-info">
+      <span class="callout-label">What is a Scheduled Task?</span>
+      A scheduled task is a configured prompt that runs automatically at a defined interval — daily, weekly, or custom. Claude executes it on Anthropic's servers. Note that tasks run when Claude's servers are available; the actual start time may vary by a few minutes from your configured schedule.
+    </div>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="step-card apply" id="step8">
+    <div class="step-meta"><span class="step-num">Step 8</span><span class="step-time">~ 10 min</span></div>
+    <h3>Paste the Job Ranker &amp; Generator Prompt</h3>
+    <p>Copy the prompt below into the task's prompt field. Replace everything in <strong>[square brackets]</strong> with your real details before saving.</p>
+
+    <div class="callout callout-green">
+      <span class="callout-label">This prompt is fully customisable</span>
+      <p>Think of it as a starting template. You can modify any part to suit your search — for example:</p>
+      <ul>
+        <li>Search only LinkedIn, only SEEK, or only Indeed</li>
+        <li>Filter to remote-only roles, or jobs above a specific salary</li>
+        <li>Add a step to draft a cover letter for every HIGH-scored job</li>
+        <li>Filter by company size, industry, or specific tech stack</li>
+        <li>Save resume PDFs to a named folder in Google Drive</li>
+      </ul>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-header">
+        <span class="prompt-label">Job Ranker &amp; Generator Prompt — Paste into Scheduled Task</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      </div>
+      <span class="prompt-content">Daily Job Search Prompt
+Run my daily job search. Work step by step and confirm each step in one line as you go.
+
+STEP 1 — Load profile and preferences
+Fetch my Master CV from Notion (page "Master CV/RESUME").
+Load my search preferences (keywords, titles, experience level, job type, date range) from my preferences. Confirm in one line that both loaded.
+
+STEP 2 — Search each source SEPARATELY using the specified actors
+Run these three sources independently, one at a time, applying the search filters from my preferences to each. For EACH source, report how many fresh listings (posted within 7 days) it returned:
+- Seek — use Apify actor "blackfalcondata/seek-scraper"
+- LinkedIn — use Apify actor "curious_coder/linkedin-jobs-scraper"
+- Indeed — use indeed connector, do NOT use Apify for that
+
+Use ONLY these named actors for Seek and LinkedIn. Do NOT substitute any other scraper. If an actor errors or returns zero, say so explicitly WITH the reason.
+Attempt at least 7 from each source; target 20+ total.
+
+STEP 3 — Filter
+Remove anything that violates my dealbreakers, falls below my salary floor, or is outside my locations. Remove duplicates (same company + title) and any job already in my Notion Job Tracker.
+
+STEP 4 — Score and rank
+Score each remaining job 0–100 against my Master CV. Tier them HIGH (80+), MEDIUM (60–79), LOW (under 60). Sort highest first.
+
+STEP 5 — Show me the table
+Output ONE table, these columns only, no other prose:
+Title | Company | Source | Location | Salary | Score | Tier | Link
+
+STEP 6 — Log to Notion (HIGH + MEDIUM only)
+For each HIGH and MEDIUM job, create one row in my Notion Job Tracker 2026 with EXACTLY these fields:
+Title · Company · Source · Location · Salary · Score · Tier · Job Link · Date Found · Resume Variant
+Then print: "Logged N jobs (X skipped as duplicates)."
+
+STEP 7 — Resume variants (HIGH jobs ONLY, intelligent reuse)
+I maintain resume VARIANTS each targeting a role cluster (e.g. "Backend/Platform Engineer", "ML/AI Engineer", "Full-Stack", "Data Engineer").
+A registry of existing variants lives in Notion DB "Resume Variants" (fields: Variant Name · Role Cluster · Key Keywords · File Path · Drive Link).
+
+For each HIGH job:
+1. Classify the job into a role cluster.
+2. Look up existing variants in "Resume Variants".
+3. If an existing variant covers ≥85% of the job's key requirements, REUSE it.
+4. If no variant fits, GENERATE one new variant from my Master CV, save as PDF to Google Drive, and save the Google Drive link in the "Resume Variants" Notion database so I can open it with one click.
+5. Never generate more than one new variant per role cluster per run.
+6. Do not print the resume in chat. Print: "Saved &lt;filename&gt; ✓" or "FAILED: &lt;reason&gt;".
+
+In each Notion Job Tracker 2026 row, set "Resume Variant" to the variant that applies.
+End with: "Reused N variants, generated M new (clusters: ...)."
+
+Preferences
+Nice to have:
+Target roles: [e.g. AI Engineer, Machine Learning Engineer, Full Stack Developer, MERN Stack, JavaScript Developer, Web Developer, Software Engineer]
+Experience targets: [e.g. 0-5 years]
+Jobs type: [e.g. Remote, Hybrid, On-site — willing to relocate anywhere in Australia]
+Working rights: [e.g. Full working rights]
+Salary range: [e.g. $70K AUD floor — up to any]
+
+Should NOT have:
+Target roles: [e.g. Staff AI Engineer]
+Experience targets: [e.g. 8+ years / very senior positions]
+Working rights: [e.g. Requires citizenship]
+My dealbreakers: [e.g. no contract roles / no relocation / no companies under 20 people]</span>
+    </div>
+
+    <div class="callout callout-danger">
+      <span class="callout-label">Required — Replace ALL Placeholder Values Before Running</span>
+      <p style="margin-bottom:10px;">Everything in <strong>[square brackets]</strong> must be replaced with your actual information. Leaving placeholder text in will cause Claude to search for the example text literally — returning nothing useful.</p>
+      <ul>
+        <li>Target roles → your actual job titles</li>
+        <li>Experience targets → your actual level (e.g. "0–5 years")</li>
+        <li>Jobs type → your preference (e.g. "Remote, Hybrid — Australia")</li>
+        <li>Working rights → your real status (e.g. "Full working rights")</li>
+        <li>Salary range → your actual floor</li>
+        <li>Should NOT have → your real dealbreakers</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Tips for Better Results</span>
+      <ul>
+        <li><strong>Be specific with role titles.</strong> "Software Engineer" is very broad. "Backend Python Engineer" or "React Frontend Developer" yields more relevant matches and better scoring.</li>
+        <li><strong>Set a realistic salary floor.</strong> A floor that's too high will exclude listings that don't advertise salary but may negotiate to your target — you'll never see them.</li>
+        <li><strong>Review the scored table before acting.</strong> Claude's scoring reflects keyword and skills overlap with your CV. Use scores as a signal — you may find HIGH-scored roles that aren't a fit in practice, and vice versa. Your judgment is the final filter.</li>
+        <li><strong>Refine your dealbreakers over time.</strong> After the first few runs, add recurring unwanted job types (e.g. "no gaming industry" or "no startup under 20 people") to cut noise from future results.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STEP 9 -->
+  <div class="step-card apply" id="step9">
+    <div class="step-meta"><span class="step-num">Step 9</span><span class="step-time">~ 3 min</span></div>
+    <h3>Set the Model, Schedule, and Run</h3>
+
+    <p style="margin-bottom:12px;"><strong>Choose a model</strong> — Haiku is recommended for cost efficiency on long automation tasks:</p>
+    <div class="model-row">
+      <div class="model-chip recommended">Claude Haiku 4.5 <span class="tag">Recommended — fastest &amp; cheapest</span></div>
+      <div class="model-chip">Claude Haiku 4.6 <span class="tag">Also suitable</span></div>
+    </div>
+
+    <div class="callout callout-info" style="margin-top:14px;">
+      <span class="callout-label">Model availability &amp; cost</span>
+      The models available depend on your Claude plan. For long, multi-step tasks like this prompt, Haiku uses significantly fewer tokens than Sonnet or Opus — especially important when running daily. Quality for structured search, filtering, and ranking is comparable across model tiers. If you notice reasoning errors in the output, try Sonnet as a step up.
+    </div>
+
+    <p style="margin-top:18px;"><strong>Set your schedule:</strong></p>
+    <ul style="margin-top:8px;">
+      <li><strong>Daily</strong> — recommended if actively job hunting</li>
+      <li><strong>Weekly</strong> — suitable if passively monitoring the market</li>
+    </ul>
+
+    <p style="margin-top:16px;"><strong>Click Run</strong> to execute immediately and verify everything works end-to-end, or save and let the schedule handle future runs.</p>
+  </div>
+
+  <!-- STEP 10 -->
+  <div class="step-card apply" id="step10">
+    <div class="step-meta"><span class="step-num">Step 10</span><span class="step-time">Ongoing</span></div>
+    <h3>What Claude Creates For You</h3>
+    <p>After each run, Claude builds and maintains the following in your Notion workspace:</p>
+
+    <div class="output-grid">
+      <div class="output-card">
+        <div class="output-icon">💼</div>
+        <h4>Job Tracker 2026</h4>
+        <p>Every HIGH and MEDIUM job logged automatically — title, company, source, salary, score, tier, and a direct link to the listing.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-icon">📄</div>
+        <h4>Resume Variants</h4>
+        <p>Each role cluster gets a tailored resume — generated once from your Master CV, reused for future matches. Links directly to the PDF in Drive.</p>
+      </div>
+    </div>
+
+    <div class="screenshot">
+      <img src="Screenshot 2026-06-09 at 14.08.58.png" alt="Job Tracker 2026 in Notion" />
+      <div class="screenshot-caption">Job Tracker 2026 — populated after each run</div>
+    </div>
+    <div class="screenshot">
+      <img src="Screenshot 2026-06-09 at 14.10.21.png" alt="Resume Variants database with Google Drive links" />
+      <div class="screenshot-caption">Resume Variants — each row links directly to the PDF in Google Drive</div>
+    </div>
+
+    <div class="callout callout-success" style="margin-top:16px;">
+      <span class="callout-label">One-click access to every resume variant</span>
+      Every PDF Claude generates is saved to Google Drive with a link stored in Notion. Click it from your Job Tracker to open the exact resume used for that application — no hunting through folders.
+    </div>
+    <div class="callout callout-green">
+      <span class="callout-label">These databases grow smarter with every run</span>
+      <p>Job Tracker 2026 becomes your complete application history over time. Resume Variants improves too — once a variant exists for a cluster, it's reused automatically without generating a new one. You review results and decide where to apply. Claude handles the research and filing.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PHASE 2 — TRACK
+════════════════════════════════════════════════ -->
+<div class="section-header track" id="section-track">
+  <div class="section-eyebrow">Phase 2</div>
+  <h2>Track Your Applications</h2>
+  <p>As applications go out, job-related emails will fill your inbox. A Gmail filter keeps them organised automatically — and Claude can process them on demand to keep your Notion tracker up to date.</p>
+</div>
+
+<div class="content">
+
+  <!-- STEP 11 -->
+  <div class="step-card track" id="step11">
+    <div class="step-meta"><span class="step-num">Step 11</span><span class="step-time">~ 5 min</span></div>
+    <h3>Create a Gmail Filter for Job Emails</h3>
+    <p>This filter automatically labels any email about applications, interviews, offers, or rejections with a <strong>"Jobs"</strong> label — no manual sorting needed.</p>
+
+    <div style="margin-top:20px;">
+      <div class="gmail-step">
+        <span class="gmail-step-num">1</span>
+        <p>In Gmail, click the <strong>Settings gear</strong> (top right) → <strong>See all settings</strong>.</p>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.12.10.png" alt="Gmail Quick Settings" />
+        <div class="screenshot-caption">Gear icon → "See all settings"</div>
+      </div>
+
+      <div class="gmail-step" style="margin-top:18px;">
+        <span class="gmail-step-num">2</span>
+        <p>Click the <strong>"Filters and Blocked Addresses"</strong> tab → <strong>"Create a new filter"</strong>.</p>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.12.18.png" alt="Filters tab" />
+        <div class="screenshot-caption">Filters and Blocked Addresses tab</div>
+      </div>
+
+      <div class="gmail-step" style="margin-top:18px;">
+        <span class="gmail-step-num">3</span>
+        <p>In the <strong>"Has the words"</strong> field, paste this exactly:</p>
+      </div>
+      <div class="kw-box">job OR application OR interview OR rejected OR offer OR linkedin OR seek OR indeed</div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.12.53.png" alt="Filter form" />
+        <div class="screenshot-caption">Paste into "Has the words" → click "Create filter"</div>
+      </div>
+
+      <div class="gmail-step" style="margin-top:18px;">
+        <span class="gmail-step-num">4</span>
+        <p>Click <strong>"Create filter"</strong>. On the next screen, tick <strong>"Apply the label"</strong> → choose <strong>"New label..."</strong> → type <strong>Jobs</strong>.</p>
+      </div>
+      <div class="screenshot-row">
+        <div class="screenshot">
+          <img src="Screenshot 2026-06-09 at 14.13.00.png" alt="Tick Apply the label" />
+          <div class="screenshot-caption">Tick "Apply the label"</div>
+        </div>
+        <div class="screenshot">
+          <img src="Screenshot 2026-06-09 at 14.13.07.png" alt="Label dropdown" />
+          <div class="screenshot-caption">Select or create "Jobs" label</div>
+        </div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.13.14.png" alt="Creating Jobs label" />
+        <div class="screenshot-caption">Type "Jobs" → click Create</div>
+      </div>
+
+      <div class="gmail-step" style="margin-top:18px;">
+        <span class="gmail-step-num">5</span>
+        <p>Tick <strong>"Also apply filter to matching conversations"</strong> to backfill existing emails, then click <strong>Create filter</strong>.</p>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.13.34.png" alt="Also apply to existing" />
+        <div class="screenshot-caption">Backfill existing emails → Create filter</div>
+      </div>
+    </div>
+
+    <div class="callout callout-success" style="margin-top:16px;">
+      <span class="callout-label">Your Jobs label is now active</span>
+      Application confirmations, interview invites, offer letters, and rejections all land here automatically. The count builds over time as your search progresses.
+    </div>
+    <div class="screenshot">
+      <img src="Screenshot 2026-06-09 at 14.13.41.png" alt="Jobs label in Gmail" />
+      <div class="screenshot-caption">The Jobs label in your Gmail sidebar</div>
+    </div>
+    <div class="screenshot-row" style="margin-top:14px;">
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.12.25.png" alt="Existing filter" />
+        <div class="screenshot-caption">Your active filter in settings</div>
+      </div>
+      <div class="screenshot">
+        <img src="Screenshot 2026-06-09 at 14.12.30.png" alt="Filter confirmation" />
+        <div class="screenshot-caption">Filter active and running</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 12 -->
+  <div class="step-card track" id="step12">
+    <div class="step-meta"><span class="step-num">Step 12</span><span class="step-time">On demand</span></div>
+    <h3>Use Claude to Process Your Jobs Label</h3>
+    <p>With all job emails automatically labelled, ask Claude at any point to fetch them, extract key information, and log updates to your Notion Job Tracker — using a single message.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-header">
+        <span class="prompt-label">Example prompts — paste into Claude chat</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      </div>
+      <span class="prompt-content">"Fetch all new emails from my Jobs label in Gmail since yesterday. For each one, extract: company name, job title, current status (applied / interview invite / rejected / offer), and any action needed. Log them to my Job Tracker 2026 in Notion, matching to existing rows where possible."
+
+"Check my Jobs Gmail label and summarise what happened this week — how many applications I sent, how many interview invites I received, and any rejections. Give me a brief weekly summary."
+
+"Look at my Jobs Gmail label and find any emails I haven't responded to yet. Draft a reply for each one."</span>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">Flexible by design</span>
+      You can log directly to Job Tracker 2026 to update application statuses, or set up a separate Notion database just for email tracking. Claude adapts to whatever structure works for you.
+    </div>
+    <div class="callout callout-green">
+      <span class="callout-label">The full tracking loop is in place</span>
+      <p>Claude finds and scores jobs → logs the best to Notion → generates tailored resumes → saves them to Drive. When replies arrive, you ask Claude to read your Jobs label, update your tracker, and draft responses. Research and filing are handled — you review and decide.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PHASE 3 — PREPARE
+════════════════════════════════════════════════ -->
+<div class="section-header prepare" id="section-prepare">
+  <div class="section-eyebrow">Phase 3</div>
+  <h2>Prepare for Interviews</h2>
+  <p>Once interviews are being scheduled, Claude can deep-research the company, analyse the role against your background, generate likely questions with coached answers, and give you a brief you can review on your phone before walking in.</p>
+</div>
+
+<div class="content">
+
+  <!-- STEP 13 -->
+  <div class="step-card prepare" id="step13">
+    <div class="step-meta"><span class="step-num">Step 13</span><span class="step-time">On demand</span></div>
+    <h3>Interview Prep Prompt</h3>
+    <p>Use this prompt when you have an interview confirmed. Paste it into a new Claude chat, and either include the job description directly or let Claude fetch it from your Notion Job Tracker. The output is a complete brief — company research, role analysis, 15 tailored questions with coached answers, and questions to ask them.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-header">
+        <span class="prompt-label">Interview Prep Prompt — Paste into a new Claude chat</span>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      </div>
+      <span class="prompt-content">You are my personal interview coach and research analyst. I have an upcoming interview and I need to be fully prepared. Work through each step below and produce everything I need.
+
+STEP 1 — Load the job
+Option A: Fetch my Notion Job Tracker 2026 and find the row for [COMPANY NAME] — [JOB TITLE].
+Option B: Use the job description I've pasted at the bottom of this message.
+Extract: job title, company, key responsibilities, required skills, and any stated values or culture notes.
+
+STEP 2 — Research the company
+Search the web for recent information about this company:
+- What they do: core product/service, business model, revenue model
+- Company size and stage (startup / scaleup / enterprise / public)
+- Recent news, product launches, or milestones (last 6 months)
+- Engineering blog posts, talks, or technical content (if a tech role)
+- Glassdoor themes: what do employees say about culture, management, pace?
+- Their stated values or leadership principles
+
+STEP 3 — Analyse the role
+From the job description, identify:
+- The top 5 must-have skills or experiences they are looking for
+- The 3 core problems this role is hired to solve
+- Red flags or unusual requirements I should be prepared to address
+- Seniority signals: does the listed level match the actual scope of work?
+
+STEP 4 — Match me to the role
+Load my Master CV from Notion (page "Master CV/RESUME").
+For each of the top 5 requirements, assess:
+- My fit: Strong / Partial / Gap
+- The specific experience or project from my CV I should lead with
+- Any gaps I need to be ready to reframe positively
+
+STEP 5 — Generate 15 interview questions with coached answers
+Produce 15 likely questions for this specific role and company:
+- 5 technical / skills-based questions
+- 5 behavioural questions (STAR format)
+- 3 "why this company / role" questions
+- 2 challenging or pressure-test questions
+
+For each question provide:
+• Why they're likely asking it
+• A suggested answer structure using my actual experience (STAR where applicable)
+• Key points to land, and what to avoid saying
+
+STEP 6 — Questions to ask them
+Give me 6 strong questions to ask the interviewer:
+- 2 about the role and what success looks like
+- 2 about the team, culture, or ways of working
+- 2 about company direction, challenges, or priorities
+Make them specific to what you found in the research — not generic.
+
+STEP 7 — One-page interview brief (save this to Notion)
+Produce a clean, scannable brief I can open on my phone right before the interview:
+
+COMPANY: [name]
+What they do: [2 sentences]
+Recent news: [2–3 bullet points]
+
+ROLE: [title]
+What they need: [3 bullet points]
+My strongest talking points: [3 bullet points]
+Watch-outs / gaps to prepare for: [2 bullet points]
+
+TOP 3 QUESTIONS TO ASK: [list]
+
+[PASTE JOB DESCRIPTION HERE — or leave blank if fetching from Notion]</span>
+    </div>
+
+    <div class="callout callout-plum">
+      <span class="callout-label">Save the brief to Notion</span>
+      After Claude produces the interview brief in Step 7, ask it to save the output to a new Notion page titled <strong>"Interview — [Company] [Date]"</strong>. This way you can pull it up on the Notion mobile app anywhere — before you walk into the building, or while you're on hold.
+    </div>
+
+    <p style="margin-top:24px; font-weight:600; color: var(--neutral-800); font-size:1rem;">Tips for Being Interview-Ready</p>
+    <p style="margin-top:6px; color: var(--neutral-600); font-size:0.93rem;">Use these habits alongside the prep prompt to walk into every conversation with an edge.</p>
+
+    <div class="tips-grid" style="margin-top:16px;">
+      <div class="tip-card">
+        <span class="tip-num">Tip 01</span>
+        <h4>When a Company Calls — Don't Panic, Use the Delay</h4>
+        <p>Most modern iPhones show the caller's name or company when a known number calls. If you see a company name appear, it's completely fine to let it go to voicemail. Call back within 5–10 minutes. Use those minutes to open your Notion Job Tracker on your phone, find the company row, and scan the role details. Walking into a call prepared is always better than answering unprepared. Recruiters expect callbacks — it's not rude.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 02</span>
+        <h4>Research Your Interviewer Before the Call</h4>
+        <p>When you receive a calendar invite, check who you'll be speaking with. Find them on LinkedIn — look at their background, what they've built, and what they post about. Mentioning something specific ("I saw you worked on X before joining") signals genuine interest and sets a collaborative tone from the first minute. Interviewers notice when candidates have done their homework.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 03</span>
+        <h4>Run a Mock Interview with Claude</h4>
+        <p>After the prep prompt generates your 15 questions, paste them back into a new Claude chat and say: <em>"Act as an interviewer for this role. Ask me these questions one at a time and give me honest feedback on each answer."</em> Practice saying your answers out loud — not just thinking them. The verbal version and the mental version are very different. Do this at least once before any important interview.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 04</span>
+        <h4>Have Your Resume Variant Open During the Interview</h4>
+        <p>Interviewers (especially on phone screens) often read directly from the resume you submitted. Pull up the exact resume variant from your Notion Job Tracker before the call starts — it's linked right there in the "Resume Variant" column. This way when they say "tell me about your work at [Company]," you're looking at the same document they are.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 05</span>
+        <h4>Prepare a Specific "Why This Company?" Answer</h4>
+        <p>Generic answers like "I love your culture and growth opportunities" are red flags. Use the company research Claude generates in Step 2 of the prep prompt to find something specific and genuine — a product decision, a recent launch, a problem they're solving, or a value they've demonstrated publicly. One specific, well-researched reason is worth ten generic ones.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 06</span>
+        <h4>Night-Before Routine — Don't Cram</h4>
+        <p>The night before: open your Notion interview brief, read through it once slowly, then close it. Don't cram for hours. Your brain consolidates information during sleep — a single clear read before bed is more effective than late-night cramming. Set out anything you need (laptop charger, notes, water). Being calm and rested is a competitive advantage most candidates ignore.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 07</span>
+        <h4>Ask Claude to Prep Your Salary Negotiation</h4>
+        <p>If you reach offer stage, ask Claude: <em>"Research the market rate for [role title] in [city] with my experience level. Help me prepare a negotiation strategy — what to say when they ask for my number, how to respond to an offer below target, and what my walk-away point should be."</em> Negotiation preparation is as important as interview preparation — most people skip it entirely.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-num">Tip 08</span>
+        <h4>Log Every Interview Outcome to Notion</h4>
+        <p>After each interview, spend 5 minutes telling Claude what happened: <em>"I just finished an interview at [Company] for [role]. It went [description]. They said [details]. Log this to my Job Tracker 2026 and update the status."</em> Over time, your tracker becomes a searchable history of what worked, what didn't, and which companies are still active. That data is genuinely useful if the search runs long.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-plum" style="margin-top:20px;">
+      <span class="callout-label">Stuck? Ask Claude or ChatGPT</span>
+      If the interview prep prompt doesn't produce what you expected, or you want a second opinion on a specific question, just describe the situation in plain language. Claude and ChatGPT are both excellent at ad-hoc coaching — you don't need a perfect prompt for every situation. Just ask.
+    </div>
+  </div>
+
+  <hr class="divider" />
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     THE POWER OF CLAUDE
+════════════════════════════════════════════════ -->
+<div class="section-header" id="power">
+  <div class="section-eyebrow">Beyond Job Search</div>
+  <h2>What Else Can You Do Now?</h2>
+  <p>You've connected Claude to your email, documents, the web, and your knowledge base. The job search workflow is one application of a much broader capability.</p>
+</div>
+
+<div class="content">
+  <div class="callout callout-warning" style="margin-bottom:20px;">
+    <span class="callout-label">Consider what you've built</span>
+    Claude can read your Gmail, write to Notion, search the web, save files to Google Drive, and run tasks on a defined schedule. That combination is a general-purpose assistant — job search is just one use case.
+  </div>
+
+  <div class="possibilities-grid">
+    <div class="possibility-card">
+      <span class="p-icon">📧</span>
+      <h4>Daily Email Summary</h4>
+      <p>Each morning, Claude reads your inbox and produces a prioritised summary of what requires attention that day.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">📅</span>
+      <h4>Meeting Prep Briefs</h4>
+      <p>Before any meeting, Claude pulls context from your emails, notes, and Notion to produce a one-page brief.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">📊</span>
+      <h4>Weekly Progress Report</h4>
+      <p>Claude reviews your week across all connected tools and produces a structured summary of what you completed.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">🔍</span>
+      <h4>On-Demand Research</h4>
+      <p>Ask Claude to research any topic, synthesise it, and save a structured brief to Notion — in minutes, not hours.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">✍️</span>
+      <h4>Email Drafting</h4>
+      <p>Tell Claude to draft follow-ups, cold outreach, or cover letters in your preferred tone and style.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">🗂️</span>
+      <h4>Knowledge Base Organisation</h4>
+      <p>Claude can organise, summarise, and cross-link Notion pages — turning scattered notes into a structured system.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">🎯</span>
+      <h4>Goal Tracking</h4>
+      <p>Set weekly goals in Notion and have Claude check in on progress each Friday and produce a brief report.</p>
+    </div>
+    <div class="possibility-card">
+      <span class="p-icon">🤝</span>
+      <h4>LinkedIn Outreach</h4>
+      <p>Claude can research a contact, draft a personalised connection request, and help you follow up — all from Cowork.</p>
+    </div>
+  </div>
+
+  <div class="closing-banner">
+    <h2>The groundwork is in place.</h2>
+    <p>One-time setup of 30–60 minutes gives you a connected workflow that saves hundreds of hours across your job search — and applies well beyond it. You find the roles, review the scores, go to the interviews. Claude handles the research, filing, and prep work. What you do with this next is entirely up to you.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     TROUBLESHOOTING
+════════════════════════════════════════════════ -->
+<div class="section-header" id="troubleshooting">
+  <div class="section-eyebrow">Reference</div>
+  <h2>Troubleshooting Common Issues</h2>
+  <p>Most problems have a simple fix. Check here before re-running setup — or just describe the issue to Claude and ask it to help you debug.</p>
+</div>
+
+<div class="content">
+
+  <div class="trouble-item">
+    <div class="trouble-q">Connector authentication keeps failing or disconnecting</div>
+    <div class="trouble-a">Close the authentication browser window and try reconnecting from Customize → Connectors. Make sure you're logged into the correct Google or Notion account in your browser before clicking the connector link. Corporate Google Workspace accounts sometimes block third-party OAuth — if this happens repeatedly, try with a personal Gmail account.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">Apify actor returns 0 results or errors out</div>
+    <div class="trouble-a">First, verify your API token is correctly pasted with no leading or trailing spaces. Then check your Apify account's free-tier usage limits under apify.com → Billing — if you've exhausted your monthly compute units, actors will fail silently or return empty. Also confirm you're using the exact actor names from the prompt (e.g. <code>blackfalcondata/seek-scraper</code>) — substituting a different actor will break the workflow. If stuck, paste the error message into Claude chat and ask it to diagnose.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">Claude says it cannot find the Notion page "Master CV/RESUME"</div>
+    <div class="trouble-a">The Notion connector requires an exact name match. Check for extra spaces, different capitalisation, or a different slash character. Open the page in Notion and confirm the title is exactly <strong>Master CV/RESUME</strong>. Also ensure the Notion connector has been granted access to the workspace where that page lives — you may need to re-authorise if the page is in a different workspace.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">Resume variant is not saving to Google Drive</div>
+    <div class="trouble-a">This is usually a permissions issue. Go to Customize → Connectors → Google Drive and check the connector is active. If it is, try re-authenticating by going through the Google sign-in flow again. Ensure the Google account you connected is the same one where files should be saved. If Claude reports a specific error, include it in your next message — it will usually indicate whether the issue is permissions, quota, or an invalid path.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">Scheduled task ran but nothing appeared in Notion</div>
+    <div class="trouble-a">Open the run log in Cowork → Scheduled to see what Claude actually did. If Step 6 in the log shows "Logged 0 jobs," it means all results were filtered out — either as duplicates, below your salary floor, or outside your locations. Temporarily lower your filters and re-run to verify the pipeline works end-to-end, then tighten them again. If the log shows a Notion error, re-authenticate the connector and re-run.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">The scored table shows mostly LOW-tier jobs</div>
+    <div class="trouble-a">Scoring is based on keyword overlap between job descriptions and your Master CV. If your CV uses different terminology than job listings, scores will be lower. Return to Step 6 and run the Master CV prompt again — this time push specifically for technical keywords, tool names, and industry-standard terminology. You can also make your target role titles more precise, which reduces volume but improves relevance of what comes back.</div>
+  </div>
+
+  <div class="trouble-item">
+    <div class="trouble-q">The interview prep prompt produces generic answers, not tailored ones</div>
+    <div class="trouble-a">This usually means Claude couldn't locate your Master CV in Notion, or the job description wasn't specific enough. Paste your Master CV directly into the chat below the prompt (instead of relying on the Notion fetch) and paste the full job description at the bottom. The more specific the input, the more specific the output. If answers still feel generic, tell Claude: <em>"These answers feel too generic — rewrite them using specific projects and technologies from my CV."</em></div>
+  </div>
+
+</div>
+
+<footer>
+  <p>AI-Powered Job Search — Seminar Guide &nbsp;·&nbsp; Claude Cowork</p>
+</footer>
+
+<script>
+  function copyPrompt(btn) {
+    const box = btn.closest('.prompt-box');
+    const content = box.querySelector('.prompt-content');
+    if (!content) return;
+    navigator.clipboard.writeText(content.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2200);
+    }).catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = content.textContent.trim();
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2200);
+    });
+  }
+</script>
+
+</body>
+</html>
